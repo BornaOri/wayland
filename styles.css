@@ -1,0 +1,231 @@
+/* Global Waybar Styling */
+* {
+    font-family: "JetBrains Mono Nerd Font", "Font Awesome 6 Free", monospace;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+/* Main Window */
+window#waybar {
+    background: rgba(26, 24, 22, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 190, 152, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip Styling */
+tooltip {
+    background: rgba(40, 40, 40, 0.95);
+    border: 1px solid rgba(212, 190, 152, 0.4);
+    border-radius: 4px;
+    color: #ebdbb2;
+}
+
+tooltip label {
+    color: #ebdbb2;
+    padding: 8px;
+}
+
+/* Left Section - Application Launchers */
+#custom-launcher-terminal,
+#custom-launcher-vscode,
+#custom-launcher-spotify,
+#custom-launcher-firefox {
+    color: #d4be98;
+    background: transparent;
+    padding: 0 16px;
+    margin: 4px 2px;
+    border-radius: 2px;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#custom-launcher-terminal:hover {
+    background: rgba(184, 187, 38, 0.15);
+    color: #b8bb26;
+    box-shadow: 0 2px 8px rgba(184, 187, 38, 0.2);
+}
+
+#custom-launcher-vscode:hover {
+    background: rgba(131, 165, 152, 0.15);
+    color: #83a598;
+    box-shadow: 0 2px 8px rgba(131, 165, 152, 0.2);
+}
+
+#custom-launcher-spotify:hover {
+    background: rgba(184, 187, 38, 0.15);
+    color: #b8bb26;
+    box-shadow: 0 2px 8px rgba(184, 187, 38, 0.2);
+}
+
+#custom-launcher-firefox:hover {
+    background: rgba(251, 241, 199, 0.15);
+    color: #fbf1c7;
+    box-shadow: 0 2px 8px rgba(251, 241, 199, 0.2);
+}
+
+/* Center Section - Clock */
+#clock {
+    color: #ebdbb2;
+    background: rgba(60, 56, 54, 0.4);
+    padding: 0 20px;
+    margin: 4px 8px;
+    border: 1px solid rgba(212, 190, 152, 0.2);
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+#clock:hover {
+    background: rgba(80, 73, 69, 0.6);
+    border-color: rgba(212, 190, 152, 0.4);
+}
+
+/* Right Section - System Modules */
+#pulseaudio,
+#custom-microphone,
+#network,
+#battery,
+#cpu,
+#memory {
+    color: #d4be98;
+    background: transparent;
+    padding: 0 12px;
+    margin: 4px 1px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+/* Volume */
+#pulseaudio {
+    color: #8ec07c;
+}
+
+#pulseaudio:hover {
+    background: rgba(142, 192, 124, 0.15);
+    box-shadow: 0 2px 8px rgba(142, 192, 124, 0.2);
+}
+
+#pulseaudio.muted {
+    color: #fb4934;
+}
+
+/* Microphone */
+#custom-microphone {
+    color: #fabd2f;
+}
+
+#custom-microphone:hover {
+    background: rgba(250, 189, 47, 0.15);
+    box-shadow: 0 2px 8px rgba(250, 189, 47, 0.2);
+}
+
+#custom-microphone.muted {
+    color: #fb4934;
+}
+
+#custom-microphone.active {
+    color: #8ec07c;
+}
+
+/* Network */
+#network {
+    color: #83a598;
+}
+
+#network:hover {
+    background: rgba(131, 165, 152, 0.15);
+    box-shadow: 0 2px 8px rgba(131, 165, 152, 0.2);
+}
+
+#network.disconnected {
+    color: #fb4934;
+}
+
+#network.linked {
+    color: #fe8019;
+}
+
+/* Battery */
+#battery {
+    color: #b8bb26;
+}
+
+#battery:hover {
+    background: rgba(184, 187, 38, 0.15);
+    box-shadow: 0 2px 8px rgba(184, 187, 38, 0.2);
+}
+
+#battery.warning {
+    color: #fe8019;
+    animation: battery-blink 2s linear infinite;
+}
+
+#battery.critical {
+    color: #fb4934;
+    animation: battery-blink 1s linear infinite;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #8ec07c;
+}
+
+@keyframes battery-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.5; }
+}
+
+/* CPU */
+#cpu {
+    color: #d3869b;
+}
+
+#cpu:hover {
+    background: rgba(211, 134, 155, 0.15);
+    box-shadow: 0 2px 8px rgba(211, 134, 155, 0.2);
+}
+
+/* Memory */
+#memory {
+    color: #d79921;
+}
+
+#memory:hover {
+    background: rgba(215, 153, 33, 0.15);
+    box-shadow: 0 2px 8px rgba(215, 153, 33, 0.2);
+}
+
+/* High usage warning states */
+#cpu.warning,
+#memory.warning {
+    color: #fe8019;
+    animation: warning-pulse 2s ease-in-out infinite;
+}
+
+#cpu.critical,
+#memory.critical {
+    color: #fb4934;
+    animation: critical-pulse 1s ease-in-out infinite;
+}
+
+@keyframes warning-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes critical-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Separator styling for visual grouping */
+#custom-launcher-firefox {
+    margin-right: 8px;
+}
+
+#memory {
+    margin-right: 8px;
+}
